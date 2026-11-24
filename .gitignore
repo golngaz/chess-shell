@@ -15,3 +15,6 @@ Thumbs.db
 # Divers
 *.log
 /vendor/
+
+# Archives de release générées par release.sh
+/release/

@@ -199,6 +199,32 @@ Le jeu détecte :
 | Les clics ne font rien | Le terminal ou le multiplexeur ne transmet pas la souris. Dans tmux, activez `set -g mouse on`. Le clavier fonctionne toujours. |
 | `Stockfish introuvable` | Définissez `STOCKFISH=/chemin/vers/stockfish`, ou installez le paquet `stockfish`. |
 
+## Créer une release
+
+Le script `release.sh` produit un zip autonome qui embarque tout :
+
+- le jeu ;
+- la **dernière version de Stockfish** pour Linux x86-64, téléchargée à la volée depuis les [releases officielles](https://github.com/official-stockfish/Stockfish/releases), avec ses sources et sa licence GPLv3 ;
+- un lanceur `chess-shell`.
+
+```bash
+./release.sh 1.0.0
+```
+
+Le seul paramètre est le numéro de version. Un éventuel `v` en tête est retiré. Le script produit dans `release/`, un dossier ignoré par git :
+
+- `chess-shell-<version>-linux-x86-64.zip`, d'environ 80 Mo ;
+- `chess-shell-<version>-linux-x86-64.zip.sha256`, sa somme de contrôle.
+
+Pour construire la release, il faut `curl`, `tar`, `zip`, `php` et `sha256sum`. Si `chess.php`, `README.md` ou `LICENSE` ont des modifications non commitées, le script prévient mais les inclut.
+
+Côté utilisateur, seul PHP est nécessaire :
+
+```bash
+unzip chess-shell-1.0.0-linux-x86-64.zip
+./chess-shell-1.0.0-linux-x86-64/chess-shell --level=3
+```
+
 ## Licence
 
 Ce projet est distribué sous licence [MIT](LICENSE).
