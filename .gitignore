@@ -1,0 +1,17 @@
+# Moteur Stockfish : binaire > 100 Mo et sous licence GPLv3,
+# à installer séparément (voir README)
+/stockfish/
+
+# Éditeurs / IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# Système
+.DS_Store
+Thumbs.db
+
+# Divers
+*.log
+/vendor/
